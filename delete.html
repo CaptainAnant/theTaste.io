@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script src="https://smtpjs.com/v3/smtp.js"></script>
+    <button onclick="sendTest()">Send Test Email</button>
+    <script>
+    function sendTest() {
+  Email.send({
+    Host: "smtp.gmail.com",
+    Username: "bookings.thetaste.io@gmail.com",
+    Password: "ouiw dkqj czeo ifdq",
+    To: "anant.tjit@gmail.com",
+    From: "bookings.thetaste.io@gmail.com",
+    Subject: "Test Email",
+    Body: "This is a test email from SMTP.js"
+  }).then(msg => alert("Email sent: " + msg));
+}
+</script>
+</body>
+</html>

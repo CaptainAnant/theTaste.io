@@ -303,6 +303,8 @@ footer {
     align-items: center;
     justify-content: center;
     margin-top: 28px;
+    z-index: 1;
+    position: relative;
 }
 
 .feedback-btn {
@@ -545,4 +547,131 @@ footer {
 .dark-theme .qty-btn:hover {
     background: #ff9800;
     color: #232323;
+}
+
+
+
+
+/* 📱 Mobile Portrait Fixes */
+@media (max-width: 768px) {
+  body {
+    padding: 0 12px;
+    overflow-x: hidden;
+  }
+
+  .hero {
+    padding: 40px 12px;
+    min-height: 60vh;
+    text-align: center;
+  }
+
+  .hero h3 {
+    font-size: 3em;
+    word-break: break-word;
+  }
+
+  .hero h2 {
+    font-size: 1.5rem;
+  }
+
+  .hero p {
+    font-size: 1.1em;
+  }
+
+  .typewriter-container {
+    height: auto;
+    margin-top: 20px;
+  }
+
+  .main-navbar {
+    flex-direction: row;
+    justify-content: center;
+    padding: 10px 16px;
+    gap: 12px;
+  }
+
+  .circle-btn {
+    width: 40px;
+    height: 40px;
+    font-size: 1.4em;
+  }
+
+  .menu-section {
+    padding: 30px 12px;
+  }
+
+  .menu-section h1 {
+    font-size: 2rem;
+  }
+
+  .menu-section p {
+    font-size: 1em;
+  }
+
+  .menu-categories {
+    flex-wrap: wrap;
+    gap: 12px;
+    justify-content: center;
+  }
+
+  .menu-category-btn {
+    padding: 10px 20px;
+    font-size: 1rem;
+  }
+
+  .menu-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .menu-card {
+    height: auto;
+    padding-bottom: 20px;
+  }
+
+  .menu-card img {
+    height: 180px;
+  }
+
+  .cart-modal-content {
+    width: 90%;
+    margin: 60px auto 0 auto;
+    padding: 24px 16px;
+  }
+
+  .checkout-btn,
+  .add-cart-btn {
+    font-size: 1rem;
+    padding: 8px 20px;
+    width: 100%;
+    margin-top: 10px;
+  }
+
+  .qty-controls {
+    flex-direction: row;
+    justify-content: center;
+    gap: 10px;
+  }
+
+  .qty-btn {
+    width: 28px;
+    height: 28px;
+    font-size: 1em;
+  }
+
+  footer {
+    font-size: 0.75em;
+    padding: 12px;
+  }
+
+  .feedback-btn {
+    font-size: 1rem;
+    padding: 8px 20px;
+    display: block;
+    margin: 12px auto 0 auto;
+  }
+
+  .info {
+    text-align: center;
+  }
 }
