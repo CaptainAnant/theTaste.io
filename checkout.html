@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Checkout | theTaste.io</title>
+    <link rel="stylesheet" href="checkout.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <nav class="main-navbar">
+        <h2 class="checkout-title">Checkout</h2>
+        <button class="circle-btn" id="themeBtn" title="Toggle Dark Theme">
+            <span class="theme-icon">&#9788;</span>
+        </button>
+        <button class="circle-btn" id="homeBtn" title="Home">
+            <span class="home-icon">&#8962;</span>
+        </button>
+    </nav>
+    <section class="checkout-section">
+        <h1>Your Order</h1>
+        <div id="checkout-items"></div>
+        <div class="checkout-summary">
+            <div>Total Quantity: <span id="total-qty">0</span></div>
+            <div>Total Price: ₹<span id="total-price">0</span></div>
+        </div>
+        <div class="payment-options">
+            <label>
+                <input type="radio" name="payment" value="UPI" onchange="enableOrderBtn()"> UPI
+            </label>
+            <label>
+                <input type="radio" name="payment" value="Cash" onchange="enableOrderBtn()"> Pay Cash
+            </label>
+        </div>
+        <button id="orderBtn" class="order-btn" disabled>Order Coupon</button>
+    </section>
+    <script src="checkout.js"></script>
+    <script>
+    // Theme sync logic
+    function applyTheme() {
+        if (localStorage.getItem('theme') === 'dark') {
+            document.body.classList.add('dark-theme');
+        } else {
+            document.body.classList.remove('dark-theme');
+        }
+    }
+    document.getElementById('themeBtn').onclick = function() {
+        const isDark = document.body.classList.toggle('dark-theme');
+        localStorage.setItem('theme', isDark ? 'dark' : 'light');
+    };
+    window.onload = function() {
+        applyTheme();
+        renderCheckout();
+    };
+    document.getElementById("homeBtn").addEventListener("click", function() {
+    window.location.href = "index.html";
+    });
+    </script>
+</body>
+</html>

@@ -1,0 +1,186 @@
+/* ...existing code not needed, new file... */
+body {
+    background: #f9f9f9;
+    font-family: 'Poppins', sans-serif;
+    color: #333;
+    margin: 0;
+}
+
+.main-navbar {
+    position: sticky;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background: rgba(255,255,255,0.1);
+    display: flex;
+    align-items: center;
+    padding: 18px 32px;
+    z-index: 1000;
+    backdrop-filter: blur(8px);
+}
+
+.checkout-title {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #ff4d4d;
+    margin: 0;
+}
+
+.checkout-section {
+    max-width: 600px;
+    margin: 40px auto;
+    background: #fff;
+    border-radius: 16px;
+    box-shadow: 0 2px 16px rgba(0,0,0,0.07);
+    padding: 32px 24px;
+}
+
+.checkout-section h1 {
+    font-size: 2rem;
+    margin-bottom: 24px;
+    color: #ff4d4d;
+}
+
+#checkout-items {
+    margin-bottom: 24px;
+}
+
+.checkout-item {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    padding: 16px 0;
+    border-bottom: 1px solid #eee;
+}
+
+.checkout-item:last-child {
+    border-bottom: none;
+}
+
+.item-info {
+    flex: 1;
+    text-align: left;
+}
+
+.item-title {
+    font-size: 1.1em;
+    font-weight: 600;
+    margin-bottom: 4px;
+}
+
+.item-desc {
+    font-size: 0.95em;
+    color: #666;
+    margin-bottom: 4px;
+}
+
+.item-qty,
+.item-price {
+    font-size: 1em;
+    font-weight: 500;
+    margin-right: 18px;
+}
+
+.checkout-summary {
+    font-size: 1.1em;
+    font-weight: 600;
+    margin-bottom: 24px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.payment-options {
+    margin-bottom: 24px;
+    display: flex;
+    gap: 32px;
+    justify-content: center;
+    font-size: 1.1em;
+}
+
+.order-btn {
+    width: 100%;
+    padding: 14px 0;
+    font-size: 1.2em;
+    font-weight: 600;
+    border: none;
+    border-radius: 25px;
+    background: linear-gradient(90deg, #ff9800, #ff4d4d);
+    color: #fff;
+    cursor: pointer;
+    transition: background 0.2s;
+    opacity: 0.6;
+}
+
+.order-btn.active {
+    opacity: 1;
+}
+
+.order-btn:disabled {
+    cursor: not-allowed;
+    opacity: 0.6;
+}
+
+.dark-theme {
+    background: #181818;
+    color: #eee;
+}
+
+.dark-theme .checkout-section {
+    background: #232323;
+    color: #eee;
+}
+
+.dark-theme .main-navbar {
+    background: rgba(30,30,30,0.7);
+}
+
+.dark-theme .checkout-title {
+    color: #ff9800;
+}
+
+.dark-theme .order-btn {
+    background: #ff9800;
+    color: #222;
+}
+
+.dark-theme .order-btn.active,
+.dark-theme .order-btn:enabled:hover {
+    background: #ff4d4d;
+    color: #fff;
+}
+
+.dark-theme .payment-options label {
+    color: #eee;
+}
+
+#homeBtn {
+    /* margin-left: auto; */
+    margin-right: 100px;
+}
+
+#themeBtn {
+    margin-left: auto;
+    margin-right: 50px;
+}
+
+.circle-btn {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.7);
+    border: none;
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.7em;
+    cursor: pointer;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+    position: relative;
+    transition: background 0.2s;
+}
+
+.circle-btn:hover {
+    background: linear-gradient(90deg, #ff9800, #ff4d4d);
+    color: #fff;
+}
