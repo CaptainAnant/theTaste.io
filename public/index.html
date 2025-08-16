@@ -1,89 +1,535 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Welcome to Firebase Hosting</title>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>College Fest Food Stall</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Sticky Navbar -->
+    <nav class="main-navbar">
+        <button class="circle-btn" id="cartBtn" title="Cart">
+            <span class="cart-icon">&#128722;</span>
+            <span id="cartCount" class="cart-count">0</span>
+        </button>
+        <button class="circle-btn" id="themeBtn" title="Toggle Dark Theme">
+            <span class="theme-icon">&#9788;</span>
+        </button>
+    </nav>
 
-    <!-- update the version number as needed -->
-    <script defer src="/__/firebase/12.1.0/firebase-app-compat.js"></script>
-    <!-- include only the Firebase features as you need -->
-    <script defer src="/__/firebase/12.1.0/firebase-auth-compat.js"></script>
-    <script defer src="/__/firebase/12.1.0/firebase-database-compat.js"></script>
-    <script defer src="/__/firebase/12.1.0/firebase-firestore-compat.js"></script>
-    <script defer src="/__/firebase/12.1.0/firebase-functions-compat.js"></script>
-    <script defer src="/__/firebase/12.1.0/firebase-messaging-compat.js"></script>
-    <script defer src="/__/firebase/12.1.0/firebase-storage-compat.js"></script>
-    <script defer src="/__/firebase/12.1.0/firebase-analytics-compat.js"></script>
-    <script defer src="/__/firebase/12.1.0/firebase-remote-config-compat.js"></script>
-    <script defer src="/__/firebase/12.1.0/firebase-performance-compat.js"></script>
-    <!-- 
-      initialize the SDK after all desired features are loaded, set useEmulator to false
-      to avoid connecting the SDK to running emulators.
-    -->
-    <script defer src="/__/firebase/init.js?useEmulator=true"></script>
+    <!-- Hero Section -->
+    <section class="hero">
+        <h3>theTaste.<span class="hero-gradient">io</span></h3>
+        <p>Byte the taste. Sip the spark.</p>
+        <div class="typewriter-container">
+            <h2 id="typewriter"></h2>
+        </div>
+    </section>
 
-    <style media="screen">
-      body { background: #ECEFF1; color: rgba(0,0,0,0.87); font-family: Roboto, Helvetica, Arial, sans-serif; margin: 0; padding: 0; }
-      #message { background: white; max-width: 360px; margin: 100px auto 16px; padding: 32px 24px; border-radius: 3px; }
-      #message h2 { color: #ffa100; font-weight: bold; font-size: 16px; margin: 0 0 8px; }
-      #message h1 { font-size: 22px; font-weight: 300; color: rgba(0,0,0,0.6); margin: 0 0 16px;}
-      #message p { line-height: 140%; margin: 16px 0 24px; font-size: 14px; }
-      #message a { display: block; text-align: center; background: #039be5; text-transform: uppercase; text-decoration: none; color: white; padding: 16px; border-radius: 4px; }
-      #message, #message a { box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24); }
-      #load { color: rgba(0,0,0,0.4); text-align: center; font-size: 13px; }
-      @media (max-width: 600px) {
-        body, #message { margin-top: 0; background: white; box-shadow: none; }
-        body { border-top: 16px solid #ffa100; }
-      }
-    </style>
-  </head>
-  <body>
-    <div id="message">
-      <h2>Welcome</h2>
-      <h1>Firebase Hosting Setup Complete</h1>
-      <p>You're seeing this because you've successfully setup Firebase Hosting. Now it's time to go build something extraordinary!</p>
-      <a target="_blank" href="https://firebase.google.com/docs/hosting/">Open Hosting Documentation</a>
+    <!-- Menu Section -->
+    <section id="menu" class="menu-section">
+        <h1>Our <span class="menu-gradient">Menu</span></h1>
+        <p>Fresh ingredients, bold flavors, and student-friendly prices</p>
+        
+        <div class="menu-categories">
+            <button class="menu-category-btn selected" data-category="all">All</button>
+            <button class="menu-category-btn" data-category="chaats">Chaats</button>
+            <button class="menu-category-btn" data-category="appetizers">Appetizers</button>
+            <button class="menu-category-btn" data-category="beverages">Beverages</button>
+        </div>
+
+        <div id="all" class="menu-category-content">
+            <div class="scroll-menu">
+                <div class="menu-grid">
+                    <!-- Chaats -->
+                    <div class="menu-card" data-item="Pani Puri">
+                        <img src="panipuri.jpeg" alt="Pani Puri">
+                        <div class="card-row">
+                            <span class="price menu-gradient">₹35</span>
+                            <span class="category-label chaats">Chaats</span>
+                        </div>
+                        <h3>Pani Puri</h3>
+                        <p>Crispy shells filled with tangy spiced water.</p>
+                        <div class="cart-controls">
+                            <button class="add-cart-btn" onclick="showCartControls(this)">Add to Cart</button>
+                            <div class="qty-controls" style="display:none;">
+                                <button class="qty-btn" onclick="updateQty(this, -1)">-</button>
+                                <span class="qty-value">1</span>
+                                <button class="qty-btn" onclick="updateQty(this, 1)">+</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="menu-card" data-item="Sev Puri">
+                        <img src="sevpuri.jpeg" alt="Sev Puri">
+                        <div class="card-row">
+                            <span class="price menu-gradient">₹40</span>
+                            <span class="category-label chaats">Chaats</span>
+                        </div>
+                        <h3>Sev Puri</h3>
+                        <p>Crispy puris layered with chutneys and sev.</p>
+                        <div class="cart-controls">
+                            <button class="add-cart-btn" onclick="showCartControls(this)">Add to Cart</button>
+                            <div class="qty-controls" style="display:none;">
+                                <button class="qty-btn" onclick="updateQty(this, -1)">-</button>
+                                <span class="qty-value">1</span>
+                                <button class="qty-btn" onclick="updateQty(this, 1)">+</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="menu-card" data-item="Dahi Puri">
+                        <img src="dahipuri.jpeg" alt="Dahi Puri">
+                        <div class="card-row">
+                            <span class="price menu-gradient">₹40</span>
+                            <span class="category-label chaats">Chaats</span>
+                        </div>
+                        <h3>Dahi Puri</h3>
+                        <p>Mini puris stuffed with yogurt and spices.</p>
+                        <div class="cart-controls">
+                            <button class="add-cart-btn" onclick="showCartControls(this)">Add to Cart</button>
+                            <div class="qty-controls" style="display:none;">
+                                <button class="qty-btn" onclick="updateQty(this, -1)">-</button>
+                                <span class="qty-value">1</span>
+                                <button class="qty-btn" onclick="updateQty(this, 1)">+</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="menu-card" data-item="Bhel Puri">
+                        <img src="bhelpuri.jpeg" alt="Bhel Puri">
+                        <div class="card-row">
+                            <span class="price menu-gradient">₹40</span>
+                            <span class="category-label chaats">Chaats</span>
+                        </div>
+                        <h3>Bhel Puri</h3>
+                        <p>Puffed rice tossed with chutneys and crunch.</p>
+                        <div class="cart-controls">
+                            <button class="add-cart-btn" onclick="showCartControls(this)">Add to Cart</button>
+                            <div class="qty-controls" style="display:none;">
+                                <button class="qty-btn" onclick="updateQty(this, -1)">-</button>
+                                <span class="qty-value">1</span>
+                                <button class="qty-btn" onclick="updateQty(this, 1)">+</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="menu-card" data-item="Dahi Papdi Chaat">
+                        <img src="dahipapdi.jpeg" alt="Dahi Papdi Chaat">
+                        <div class="card-row">
+                            <span class="price menu-gradient">₹35</span>
+                            <span class="category-label chaats">Chaats</span>
+                        </div>
+                        <h3>Dahi Papdi Chaat</h3>
+                        <p>Crunchy papdi topped with yogurt & chutneys.</p>
+                        <div class="cart-controls">
+                            <button class="add-cart-btn" onclick="showCartControls(this)">Add to Cart</button>
+                            <div class="qty-controls" style="display:none;">
+                                <button class="qty-btn" onclick="updateQty(this, -1)">-</button>
+                                <span class="qty-value">1</span>
+                                <button class="qty-btn" onclick="updateQty(this, 1)">+</button>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Appetizers -->
+                    <div class="menu-card" data-item="Samosa Chaat">
+                        <img src="samosachaat.jpeg" alt="Samosa Chaat">
+                        <div class="card-row">
+                            <span class="price menu-gradient">₹45</span>
+                            <span class="category-label appetizers">Appetizers</span>
+                        </div>
+                        <h3>Samosa Chaat</h3>
+                        <p>Crushed samosa topped with chutneys, chickpea gravy, curd, onions, and our bold chaat magic.</p>
+                        <div class="cart-controls">
+                            <button class="add-cart-btn" onclick="showCartControls(this)">Add to Cart</button>
+                            <div class="qty-controls" style="display:none;">
+                                <button class="qty-btn" onclick="updateQty(this, -1)">-</button>
+                                <span class="qty-value">1</span>
+                                <button class="qty-btn" onclick="updateQty(this, 1)">+</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="menu-card" data-item="Peanut Salad">
+                        <img src="peanutsalad.jpeg" alt="Peanut Salad">
+                        <div class="card-row">
+                            <span class="price menu-gradient">₹25</span>
+                            <span class="category-label appetizers">Appetizers</span>
+                        </div>
+                        <h3>Peanut Salad</h3>
+                        <p>Soaked peanuts tossed with fresh veggies, tangy chutneys, chaat masala, and our secret magic.</p>
+                        <div class="cart-controls">
+                            <button class="add-cart-btn" onclick="showCartControls(this)">Add to Cart</button>
+                            <div class="qty-controls" style="display:none;">
+                                <button class="qty-btn" onclick="updateQty(this, -1)">-</button>
+                                <span class="qty-value">1</span>
+                                <button class="qty-btn" onclick="updateQty(this, 1)">+</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="menu-card" data-item="Green Sandwich">
+                        <img src="greensandwich.jpeg" alt="Green Sandwich">
+                        <div class="card-row">
+                            <span class="price menu-gradient">₹35</span>
+                            <span class="category-label appetizers">Appetizers</span>
+                        </div>
+                        <h3>Green Sandwich</h3>
+                        <p>Fresh veggies layered with zesty spreads, herbs, and our signature coriander-mint magic.</p>
+                        <div class="cart-controls">
+                            <button class="add-cart-btn" onclick="showCartControls(this)">Add to Cart</button>
+                            <div class="qty-controls" style="display:none;">
+                                <button class="qty-btn" onclick="updateQty(this, -1)">-</button>
+                                <span class="qty-value">1</span>
+                                <button class="qty-btn" onclick="updateQty(this, 1)">+</button>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Beverages -->
+                    <div class="menu-card" data-item="Lime-Mint Soda">
+                        <img src="limemint.jpeg" alt="Lime-Mint Soda">
+                        <div class="card-row">
+                            <span class="price menu-gradient">₹40</span>
+                            <span class="category-label beverages">Beverages</span>
+                        </div>
+                        <h3>Lime-Mint Soda</h3>
+                        <p>Zesty lime soda with fresh mint twist.</p>
+                        <div class="cart-controls">
+                            <button class="add-cart-btn" onclick="showCartControls(this)">Add to Cart</button>
+                            <div class="qty-controls" style="display:none;">
+                                <button class="qty-btn" onclick="updateQty(this, -1)">-</button>
+                                <span class="qty-value">1</span>
+                                <button class="qty-btn" onclick="updateQty(this, 1)">+</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="menu-card" data-item="Masala Soda">
+                        <img src="masalasoda.jpeg" alt="Masala Soda">
+                        <div class="card-row">
+                            <span class="price menu-gradient">₹35</span>
+                            <span class="category-label beverages">Beverages</span>
+                        </div>
+                        <h3>Masala Soda</h3>
+                        <p>Spiced fizzy drink with tangy kick.</p>
+                        <div class="cart-controls">
+                            <button class="add-cart-btn" onclick="showCartControls(this)">Add to Cart</button>
+                            <div class="qty-controls" style="display:none;">
+                                <button class="qty-btn" onclick="updateQty(this, -1)">-</button>
+                                <span class="qty-value">1</span>
+                                <button class="qty-btn" onclick="updateQty(this, 1)">+</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="menu-card" data-item="Blueberry Soda">
+                        <img src="blueberrysoda.jpeg" alt="Blueberry Soda">
+                        <div class="card-row">
+                            <span class="price menu-gradient">₹45</span>
+                            <span class="category-label beverages">Beverages</span>
+                        </div>
+                        <h3>Blueberry Soda</h3>
+                        <p>Bubbly soda infused with sweet blueberry burst.</p>
+                        <div class="cart-controls">
+                            <button class="add-cart-btn" onclick="showCartControls(this)">Add to Cart</button>
+                            <div class="qty-controls" style="display:none;">
+                                <button class="qty-btn" onclick="updateQty(this, -1)">-</button>
+                                <span class="qty-value">1</span>
+                                <button class="qty-btn" onclick="updateQty(this, 1)">+</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="menu-card" data-item="Pineapple Soda">
+                        <img src="pineapplesoda.jpeg" alt="Pineapple Soda">
+                        <div class="card-row">
+                            <span class="price menu-gradient">₹45</span>
+                            <span class="category-label beverages">Beverages</span>
+                        </div>
+                        <h3>Pineapple Soda</h3>
+                        <p>Tropical pineapple fizz with a tangy splash.</p>
+                        <div class="cart-controls">
+                            <button class="add-cart-btn" onclick="showCartControls(this)">Add to Cart</button>
+                            <div class="qty-controls" style="display:none;">
+                                <button class="qty-btn" onclick="updateQty(this, -1)">-</button>
+                                <span class="qty-value">1</span>
+                                <button class="qty-btn" onclick="updateQty(this, 1)">+</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="menu-card" data-item="Sprite">
+                        <img src="sprite.jpeg" alt="Sprite">
+                        <div class="card-row">
+                            <span class="price menu-gradient">₹30</span>
+                            <span class="category-label beverages">Beverages</span>
+                        </div>
+                        <h3>Sprite</h3>
+                        <p>Refreshing fizz bubbles to charge you up.</p>
+                        <div class="cart-controls">
+                            <button class="add-cart-btn" onclick="showCartControls(this)">Add to Cart</button>
+                            <div class="qty-controls" style="display:none;">
+                                <button class="qty-btn" onclick="updateQty(this, -1)">-</button>
+                                <span class="qty-value">1</span>
+                                <button class="qty-btn" onclick="updateQty(this, 1)">+</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="chaats" class="menu-category-content" style="display:none;">
+            <div class="scroll-menu">
+                <div class="menu-grid">
+                    <div class="menu-card" data-item="Pani Puri">
+                        <img src="panipuri.jpeg" alt="Pani Puri">
+                        <div class="card-row">
+                            <span class="price menu-gradient">₹35</span>
+                            <span class="category-label chaats">Chaats</span>
+                        </div>
+                        <h3>Pani Puri</h3>
+                        <p>Crispy shells filled with tangy spiced water.</p>
+                        <div class="cart-controls">
+                            <button class="add-cart-btn" onclick="showCartControls(this)">Add to Cart</button>
+                            <div class="qty-controls" style="display:none;">
+                                <button class="qty-btn" onclick="updateQty(this, -1)">-</button>
+                                <span class="qty-value">1</span>
+                                <button class="qty-btn" onclick="updateQty(this, 1)">+</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="menu-card" data-item="Sev Puri">
+                        <img src="sevpuri.jpeg" alt="Sev Puri">
+                        <div class="card-row">
+                            <span class="price menu-gradient">₹40</span>
+                            <span class="category-label chaats">Chaats</span>
+                        </div>
+                        <h3>Sev Puri</h3>
+                        <p>Crispy puris layered with chutneys and sev.</p>
+                        <div class="cart-controls">
+                            <button class="add-cart-btn" onclick="showCartControls(this)">Add to Cart</button>
+                            <div class="qty-controls" style="display:none;">
+                                <button class="qty-btn" onclick="updateQty(this, -1)">-</button>
+                                <span class="qty-value">1</span>
+                                <button class="qty-btn" onclick="updateQty(this, 1)">+</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="menu-card" data-item="Dahi Puri">
+                        <img src="dahipuri.jpeg" alt="Dahi Puri">
+                        <div class="card-row">
+                            <span class="price menu-gradient">₹40</span>
+                            <span class="category-label chaats">Chaats</span>
+                        </div>
+                        <h3>Dahi Puri</h3>
+                        <p>Mini puris stuffed with yogurt and spices.</p>
+                        <div class="cart-controls">
+                            <button class="add-cart-btn" onclick="showCartControls(this)">Add to Cart</button>
+                            <div class="qty-controls" style="display:none;">
+                                <button class="qty-btn" onclick="updateQty(this, -1)">-</button>
+                                <span class="qty-value">1</span>
+                                <button class="qty-btn" onclick="updateQty(this, 1)">+</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="menu-card" data-item="Bhel Puri">
+                        <img src="bhelpuri.jpeg" alt="Bhel Puri">
+                        <div class="card-row">
+                            <span class="price menu-gradient">₹40</span>
+                            <span class="category-label chaats">Chaats</span>
+                        </div>
+                        <h3>Bhel Puri</h3>
+                        <p>Puffed rice tossed with chutneys and crunch.</p>
+                        <div class="cart-controls">
+                            <button class="add-cart-btn" onclick="showCartControls(this)">Add to Cart</button>
+                            <div class="qty-controls" style="display:none;">
+                                <button class="qty-btn" onclick="updateQty(this, -1)">-</button>
+                                <span class="qty-value">1</span>
+                                <button class="qty-btn" onclick="updateQty(this, 1)">+</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="menu-card" data-item="Dahi Papdi Chaat">
+                        <img src="dahipapdi.jpeg" alt="Dahi Papdi Chaat">
+                        <div class="card-row">
+                            <span class="price menu-gradient">₹35</span>
+                            <span class="category-label chaats">Chaats</span>
+                        </div>
+                        <h3>Dahi Papdi Chaat</h3>
+                        <p>Crunchy papdi topped with yogurt & chutneys.</p>
+                        <div class="cart-controls">
+                            <button class="add-cart-btn" onclick="showCartControls(this)">Add to Cart</button>
+                            <div class="qty-controls" style="display:none;">
+                                <button class="qty-btn" onclick="updateQty(this, -1)">-</button>
+                                <span class="qty-value">1</span>
+                                <button class="qty-btn" onclick="updateQty(this, 1)">+</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="appetizers" class="menu-category-content" style="display:none;">
+            <div class="scroll-menu">
+                <div class="menu-grid">
+                    <div class="menu-card" data-item="Samosa Chaat">
+                        <img src="samosachaat.jpeg" alt="Samosa Chaat">
+                        <div class="card-row">
+                            <span class="price menu-gradient">₹45</span>
+                            <span class="category-label appetizers">Appetizers</span>
+                        </div>
+                        <h3>Samosa Chaat</h3>
+                        <p>Crushed samosa topped with chutneys, chickpea gravy, curd, onions, and our bold chaat magic.</p>
+                        <div class="cart-controls">
+                            <button class="add-cart-btn" onclick="showCartControls(this)">Add to Cart</button>
+                            <div class="qty-controls" style="display:none;">
+                                <button class="qty-btn" onclick="updateQty(this, -1)">-</button>
+                                <span class="qty-value">1</span>
+                                <button class="qty-btn" onclick="updateQty(this, 1)">+</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="menu-card" data-item="Peanut Salad">
+                        <img src="peanutsalad.jpeg" alt="Peanut Salad">
+                        <div class="card-row">
+                            <span class="price menu-gradient">₹25</span>
+                            <span class="category-label appetizers">Appetizers</span>
+                        </div>
+                        <h3>Peanut Salad</h3>
+                        <p>Soaked peanuts tossed with fresh veggies, tangy chutneys, chaat masala, and our secret magic.</p>
+                        <div class="cart-controls">
+                            <button class="add-cart-btn" onclick="showCartControls(this)">Add to Cart</button>
+                            <div class="qty-controls" style="display:none;">
+                                <button class="qty-btn" onclick="updateQty(this, -1)">-</button>
+                                <span class="qty-value">1</span>
+                                <button class="qty-btn" onclick="updateQty(this, 1)">+</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="menu-card" data-item="Green Sandwich">
+                        <img src="greensandwich.jpeg" alt="Green Sandwich">
+                        <div class="card-row">
+                            <span class="price menu-gradient">₹35</span>
+                            <span class="category-label appetizers">Appetizers</span>
+                        </div>
+                        <h3>Green Sandwich</h3>
+                        <p>Fresh veggies layered with zesty spreads, herbs, and our signature coriander-mint magic.</p>
+                        <div class="cart-controls">
+                            <button class="add-cart-btn" onclick="showCartControls(this)">Add to Cart</button>
+                            <div class="qty-controls" style="display:none;">
+                                <button class="qty-btn" onclick="updateQty(this, -1)">-</button>
+                                <span class="qty-value">1</span>
+                                <button class="qty-btn" onclick="updateQty(this, 1)">+</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="beverages" class="menu-category-content" style="display:none;">
+            <div class="scroll-menu">
+                <div class="menu-grid">
+                    <div class="menu-card" data-item="Lime-Mint Soda">
+                        <img src="limemint.jpeg" alt="Lime-Mint Soda">
+                        <div class="card-row">
+                            <span class="price menu-gradient">₹40</span>
+                            <span class="category-label beverages">Beverages</span>
+                        </div>
+                        <h3>Lime-Mint Soda</h3>
+                        <p>Zesty lime soda with fresh mint twist.</p>
+                        <div class="cart-controls">
+                            <button class="add-cart-btn" onclick="showCartControls(this)">Add to Cart</button>
+                            <div class="qty-controls" style="display:none;">
+                                <button class="qty-btn" onclick="updateQty(this, -1)">-</button>
+                                <span class="qty-value">1</span>
+                                <button class="qty-btn" onclick="updateQty(this, 1)">+</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="menu-card" data-item="Masala Soda">
+                        <img src="masalasoda.jpeg" alt="Masala Soda">
+                        <div class="card-row">
+                            <span class="price menu-gradient">₹35</span>
+                            <span class="category-label beverages">Beverages</span>
+                        </div>
+                        <h3>Masala Soda</h3>
+                        <p>Spiced fizzy drink with tangy kick.</p>
+                        <div class="cart-controls">
+                            <button class="add-cart-btn" onclick="showCartControls(this)">Add to Cart</button>
+                            <div class="qty-controls" style="display:none;">
+                                <button class="qty-btn" onclick="updateQty(this, -1)">-</button>
+                                <span class="qty-value">1</span>
+                                <button class="qty-btn" onclick="updateQty(this, 1)">+</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="menu-card" data-item="Blueberry Soda">
+                        <img src="blueberrysoda.jpeg" alt="Blueberry Soda">
+                        <div class="card-row">
+                            <span class="price menu-gradient">₹45</span>
+                            <span class="category-label beverages">Beverages</span>
+                        </div>
+                        <h3>Blueberry Soda</h3>
+                        <p>Bubbly soda infused with sweet blueberry burst.</p>
+                        <div class="cart-controls">
+                            <button class="add-cart-btn" onclick="showCartControls(this)">Add to Cart</button>
+                            <div class="qty-controls" style="display:none;">
+                                <button class="qty-btn" onclick="updateQty(this, -1)">-</button>
+                                <span class="qty-value">1</span>
+                                <button class="qty-btn" onclick="updateQty(this, 1)">+</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="menu-card" data-item="Pineapple Soda">
+                        <img src="pineapplesoda.jpeg" alt="Pineapple Soda">
+                        <div class="card-row">
+                            <span class="price menu-gradient">₹45</span>
+                            <span class="category-label beverages">Beverages</span>
+                        </div>
+                        <h3>Pineapple Soda</h3>
+                        <p>Tropical pineapple fizz with a tangy splash.</p>
+                        <div class="cart-controls">
+                            <button class="add-cart-btn" onclick="showCartControls(this)">Add to Cart</button>
+                            <div class="qty-controls" style="display:none;">
+                                <button class="qty-btn" onclick="updateQty(this, -1)">-</button>
+                                <span class="qty-value">1</span>
+                                <button class="qty-btn" onclick="updateQty(this, 1)">+</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="menu-card" data-item="Sprite">
+                        <img src="sprite.jpeg" alt="Sprite">
+                        <div class="card-row">
+                            <span class="price menu-gradient">₹30</span>
+                            <span class="category-label beverages">Beverages</span>
+                        </div>
+                        <h3>Sprite</h3>
+                        <p>Refreshing fizz bubbles to charge you up.</p>
+                        <div class="cart-controls">
+                            <button class="add-cart-btn" onclick="showCartControls(this)">Add to Cart</button>
+                            <div class="qty-controls" style="display:none;">
+                                <button class="qty-btn" onclick="updateQty(this, -1)">-</button>
+                                <span class="qty-value">1</span>
+                                <button class="qty-btn" onclick="updateQty(this, 1)">+</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Cart Modal -->
+    <div id="cartModal" class="cart-modal" style="display:none;">
+        <div class="cart-modal-content">
+            <span class="close" onclick="closeCartModal()">&times;</span>
+            <h3>Your Cart</h3>
+            <div id="cartItems"></div>
+            <button onclick="goToCheckout()" class="checkout-btn">Checkout</button>
+        </div>
     </div>
-    <p id="load">Firebase SDK Loading&hellip;</p>
 
-    <script>
-      document.addEventListener('DOMContentLoaded', function() {
-        const loadEl = document.querySelector('#load');
-        // // 🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥
-        // // The Firebase SDK is initialized and available here!
-        //
-        // firebase.auth().onAuthStateChanged(user => { });
-        // firebase.database().ref('/path/to/ref').on('value', snapshot => { });
-        // firebase.firestore().doc('/foo/bar').get().then(() => { });
-        // firebase.functions().httpsCallable('yourFunction')().then(() => { });
-        // firebase.messaging().requestPermission().then(() => { });
-        // firebase.storage().ref('/path/to/ref').getDownloadURL().then(() => { });
-        // firebase.analytics(); // call to activate
-        // firebase.analytics().logEvent('tutorial_completed');
-        // firebase.performance(); // call to activate
-        //
-        // // 🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥
+    <!-- Contact -->
+    <footer id="contact">
+        <p class="info">&copy; 2025 theTaste.io. All rights reserved.</p>
+        <p class="info">📍 College Fest Ground, TJIT | ✉ bookings.thetaste.io@gmail.com</p>
+        <p>Made with <span class="red-heart">&hearts;</span> by Anant.</p>
+        <a href="https://forms.gle/i5HGpf1LjaTKJGUA9" class="feedback-btn">Feedback</a>
+    </footer>
 
-        try {
-          let app = firebase.app();
-          let features = [
-            'auth', 
-            'database', 
-            'firestore',
-            'functions',
-            'messaging', 
-            'storage', 
-            'analytics', 
-            'remoteConfig',
-            'performance',
-          ].filter(feature => typeof app[feature] === 'function');
-          loadEl.textContent = `Firebase SDK loaded with ${features.join(', ')}`;
-        } catch (e) {
-          console.error(e);
-          loadEl.textContent = 'Error loading the Firebase SDK, check the console.';
-        }
-      });
-    </script>
-  </body>
+    <script src="script.js"></script>
+
+</body>
 </html>
