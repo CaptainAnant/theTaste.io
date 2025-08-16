@@ -67,15 +67,21 @@ function enableOrderBtn() {
   document.getElementById('userFormSection').style.display = 'block';
 }
 
-// ✅ Final single onsubmit handler
 document.getElementById('userForm').onsubmit = function (e) {
   e.preventDefault();
+
+  const cart = JSON.parse(localStorage.getItem('cart') || '{}');
+  const hasItems = Object.values(cart).some(qty => qty > 0);
+
+  if (!hasItems) {
+    alert("🚫 No items selected. Please add something to your cart before confirming.");
+    return;
+  }
 
   const name = document.getElementById('userName').value;
   const phone = document.getElementById('userPhone').value;
   const email = document.getElementById('userEmail').value;
   const paymentMode = document.querySelector('input[name="payment"]:checked').value;
-  const cart = JSON.parse(localStorage.getItem('cart') || '{}');
   const token = 'TKN-' + Date.now().toString().slice(-6);
 
   const itemSummary = Object.entries(cart)
