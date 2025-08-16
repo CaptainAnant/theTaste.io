@@ -1,3 +1,7 @@
+// ✅ Console log to confirm script loaded
+console.log("✅ checkout.js loaded");
+
+// 🧾 Item descriptions and prices
 const itemDescriptions = {
   "Pani Puri": "Crispy shells filled with tangy spiced water.",
   "Sev Puri": "Crispy puris layered with chutneys and sev.",
@@ -30,6 +34,7 @@ const itemPrices = {
   "Sprite": 30
 };
 
+// 🛒 Render checkout items
 function renderCheckout() {
   const cart = JSON.parse(localStorage.getItem('cart') || '{}');
   const checkoutItems = document.getElementById('checkout-items');
@@ -60,6 +65,7 @@ function renderCheckout() {
   document.getElementById('total-price').textContent = totalPrice;
 }
 
+// 💳 Enable order button after payment selection
 function enableOrderBtn() {
   const orderBtn = document.getElementById('orderBtn');
   orderBtn.disabled = false;
@@ -67,6 +73,7 @@ function enableOrderBtn() {
   document.getElementById('userFormSection').style.display = 'block';
 }
 
+// 📦 Handle form submission
 document.getElementById('userForm').onsubmit = function (e) {
   e.preventDefault();
 
@@ -105,8 +112,31 @@ document.getElementById('userForm').onsubmit = function (e) {
   }, 1000);
 };
 
+// ❌ Close thank-you popup
 function closePopup() {
   document.getElementById('thankYouPopup').style.display = 'none';
 }
 
-window.onload = renderCheckout;
+// 🌗 Theme logic
+function applyTheme() {
+  if (localStorage.getItem('theme') === 'dark') {
+    document.body.classList.add('dark-theme');
+  } else {
+    document.body.classList.remove('dark-theme');
+  }
+}
+
+// 🏠 Navigation + Theme toggle
+window.onload = function () {
+  applyTheme();
+  renderCheckout();
+
+  document.getElementById('themeBtn').onclick = function () {
+    const isDark = document.body.classList.toggle('dark-theme');
+    localStorage.setItem('theme', isDark ? 'dark' : 'light');
+  };
+
+  document.getElementById("homeBtn").addEventListener("click", function () {
+    window.location.href = "index.html";
+  });
+};
