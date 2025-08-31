@@ -287,6 +287,19 @@ footer {
     margin-top: 30px;
 }
 
+.dark-theme footer {
+    background: #232323;
+    color: #eee;
+}
+
+.dark-theme footer a {
+    color: #bbb;
+}
+
+.dark-theme footer a:hover {
+    color: #fff;
+}
+
 #backButton {
     margin-top:10px;
     background:#eee;
@@ -549,8 +562,46 @@ footer {
     color: #232323;
 }
 
+/* Content Pages */
+.content-page {
+    max-width: 800px;
+    margin: 40px auto;
+    padding: 20px;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    font-size: 1rem;
+    line-height: 1.6;
+    color: #333;
+}
 
+.content-page h1, .content-page h2, .content-page h3 {
+    margin-bottom: 16px;
+    color: #222;
+}
 
+.content-page p {
+    margin-bottom: 12px;
+}
+
+.content-page a {
+    color: #ff4d4d;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.content-page a:hover {
+    text-decoration: underline;
+}
+
+.dark-theme .content-page {
+    background: #232323;
+    color: #eee;
+}
+
+.dark-theme .content-page a {
+    color: #ff9800;
+}
 
 /* 📱 Mobile Portrait Fixes */
 @media (max-width: 768px) {
@@ -658,20 +709,34 @@ footer {
     height: 28px;
     font-size: 1em;
   }
+}
 
-  footer {
-    font-size: 0.75em;
-    padding: 12px;
-  }
+footer {
+  font-size: 0.75em;
+  padding: 12px;
+  text-align: center;
+  background-color: #f9f9f9;
+}
 
-  .feedback-btn {
-    font-size: 1rem;
-    padding: 8px 20px;
-    display: block;
-    margin: 12px auto 0 auto;
-  }
+footer a {
+  color: #555;
+  margin: 0 8px;
+  text-decoration: none;
+  font-weight: 500;
+}
 
-  .info {
-    text-align: center;
-  }
+footer a:hover {
+  text-decoration: underline;
+  color: #000;
+}
+
+.feedback-btn {
+  font-size: 1rem;
+  padding: 8px 20px;
+  display: block;
+  margin: 12px auto 0 auto;
+}
+
+.info {
+  text-align: center;
 }
