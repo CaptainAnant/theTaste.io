@@ -336,9 +336,6 @@ footer {
     background: linear-gradient(90deg, #ff4d4d, #ff9800);
 }
 
-.info {
-    font-size: 0.8em;
-}
 
 .red-heart {
     font-size: 1.3em;
@@ -739,4 +736,8 @@ footer a:hover {
 
 .info {
   text-align: center;
+}
+
+.info {
+    font-size: 1.2em;
 }
