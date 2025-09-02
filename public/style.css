@@ -95,7 +95,7 @@ body {
 .menu-card {
     min-width: 0;
     max-width: 100%;
-    height: 470px;
+    height: 470px; /* Ensure consistent height for all cards */
     background: white;
     border-radius: 16px;
     padding: 0 0 18px 0;
@@ -280,10 +280,10 @@ form button:hover {
 
 /* Footer */
 footer {
-    background: #ff4d4d;
-    color: white;
+    background: #f9f9f9;
+    color: #333; /* Updated text color for better visibility */
     text-align: center;
-    padding: 15px;
+    padding: 12px;
     margin-top: 30px;
 }
 
