@@ -2,11 +2,11 @@
 
 <div align="center">
 
-[![Live Demo](https://img.shields.io/badge/Live%20Demo-the--tasteio.vercel.app-blue?style=flat-square)](https://the-tasteio.vercel.app)
+[![Live Demo](https://img.shields.io/badge/Live%20Demo-thetasteio.shop-blue?style=flat-square)](https://thetasteio.shop/)
 [![License](https://img.shields.io/badge/License-Open%20Source-green?style=flat-square)](#)
 [![Built With](https://img.shields.io/badge/Built%20With-HTML%20%7C%20CSS%20%7C%20JavaScript-orange?style=flat-square)](#-technology-stack)
 
-*A sleek and interactive web platform to browse the menu and order coupons online for college food fests*
+*A simple website designed to look around the menu and order coupons online for the food fest in your college*
 
 </div>
 
@@ -14,7 +14,7 @@
 
 ## 📖 Overview
 
-**theTaste.io** is a modern, responsive website designed to simplify the coupon ordering experience for college food festivals. With an elegant user interface, intuitive navigation, and smooth interactions, users can explore diverse menu items and seamlessly book coupons for their favorite dishes and beverages.
+**theTaste.io** is a modern, responsive website designed to simplify the coupon ordering experience for college food festivals. With an elegant user interface, intuitive navigation, and smooth interactions, browsing and booking has never been easier!
 
 Whether you're craving Indian street food like Pani Puri and Samosa Chaat, or refreshing beverages, this platform makes ordering quick and easy!
 
@@ -202,7 +202,7 @@ firebase deploy
 ```
 
 ### Current Live URL:
-📍 [https://the-tasteio.vercel.app](https://the-tasteio.vercel.app)
+📍 [https://thetasteio.shop](https://thetasteio.shop/)
 
 ---
 
@@ -324,7 +324,7 @@ const dishes = [
 Have questions or suggestions? Feel free to:
 - 📧 Open an issue on GitHub
 - 💬 Check existing discussions
-- 🔗 Visit the live site: [the-tasteio.vercel.app](https://the-tasteio.vercel.app)
+- 🔗 Visit the live site: [thetasteio.shop](https://thetasteio.shop/)
 
 ---
 
